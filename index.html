@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <div class="header">
         <h1>Etch-a-Sketch</h1>
     </div>
     <div class="container">
         <div class="options-menu">
-
+            <h2>Options</h2>
+            <div class="btn-container">
+                <button onclick="setSquares()" type="button" class="btn btn-light">
+                    Choose Squares
+                </button>
+                <button type="button" class="btn btn-light">
+                    Rainbow
+                </button>
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-light">
+                    Reset
+                </button>
+                <button type="button" class="btn btn-light">
+                    Black
+                </button>
+            </div>
         </div>
         <div class="sketch-box">
-            
+
         </div>
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>
