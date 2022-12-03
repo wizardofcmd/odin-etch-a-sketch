@@ -1,5 +1,6 @@
 const sketchBox = document.querySelector(".sketch-box");
 const sketchBoxHeight = sketchBox.clientWidth;
+sketchBox.addEventListener("mouseover", setColour);
 
 function createNewSquares(numOfSquares) {
     let squareSize = sketchBoxHeight / numOfSquares;
@@ -44,6 +45,11 @@ function tearDownSquares() {
 function resetSketchBox() {
     tearDownSquares();
     createNewSquares(16);
+}
+
+function setColour(event){
+    event.target.className = "";
+    event.target.style.backgroundColor = 'black';
 }
 
 createNewSquares(16);
