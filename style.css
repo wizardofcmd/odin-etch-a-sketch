@@ -56,7 +56,11 @@ button {
 .sketch-box {
     width: 800px;;
     height: 800px;
-    background-color: peachpuff;
+    background-color: white;
+    border-style: solid;
+    box-sizing: border-box;
+    border-color: rgb(114, 114, 114);
+    border-width: 1px;
 }
 
 .row {
@@ -64,9 +68,5 @@ button {
 }
 
 .canvas-square {
-    border-style: solid;
     box-sizing: border-box;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    background-color: white;
 }

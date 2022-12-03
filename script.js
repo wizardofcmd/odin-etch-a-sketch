@@ -1,6 +1,13 @@
 const sketchBox = document.querySelector(".sketch-box");
 const sketchBoxHeight = sketchBox.clientWidth;
-sketchBox.addEventListener("mouseover", setColour);
+
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
+let rainbowEnabled = false;
+let blackEnabled = true;
+
 
 function createNewSquares(numOfSquares) {
     let squareSize = sketchBoxHeight / numOfSquares;
@@ -15,6 +22,11 @@ function createNewSquares(numOfSquares) {
             square.classList.add("canvas-square");
             square.setAttribute(
                 'style', `width: ${squareSize}px; height: ${squareSize}px`);
+            square.addEventListener("mouseover", setColour);
+            square.addEventListener("mousedown", setColour);
+            square.addEventListener("dragstart", (event)=>{
+                event.preventDefault();
+              })
             row.appendChild(square);
         }
     }
@@ -47,9 +59,30 @@ function resetSketchBox() {
     createNewSquares(16);
 }
 
+function enableRainbow () {
+    rainbowEnabled = true;
+    blackEnabled = false;
+}
+
+function enableBlack () {
+    rainbowEnabled = false;
+    blackEnabled = true;
+}
+
 function setColour(event){
-    event.target.className = "";
-    event.target.style.backgroundColor = 'black';
+    if (event.type === 'mouseover' && !mouseDown) return;
+
+    console.log(rainbowEnabled);
+    console.log(blackEnabled);
+    if (rainbowEnabled) {
+        red_val = Math.floor(Math.random() * 256)
+        green_val = Math.floor(Math.random() * 256)
+        blue_val = Math.floor(Math.random() * 256)
+        event.target.style.backgroundColor = `rgb(${red_val}, ${green_val}, ${blue_val})`;
+    }
+    else if (blackEnabled){
+        event.target.style.backgroundColor = 'black';
+    }
 }
 
 createNewSquares(16);
