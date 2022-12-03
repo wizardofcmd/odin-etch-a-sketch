@@ -22,7 +22,7 @@ function createNewSquares(numOfSquares) {
 function setSquares() {
     let userChoice = prompt("Set the number of squares per side. (Max is 100!)")
     try {
-        if (isNaN(userChoice)) throw "not a number.";
+        if (isNaN(parseInt(userChoice))) throw "not a number.";
         if (userChoice % 1 != 0) throw "a decimal."
         if (userChoice < 1) throw "too low.";
         if (userChoice > 100) throw "too high.";
@@ -39,6 +39,11 @@ function setSquares() {
 
 function tearDownSquares() {
     document.querySelectorAll('.row').forEach(e => e.remove());
+}
+
+function resetSketchBox() {
+    tearDownSquares();
+    createNewSquares(16);
 }
 
 createNewSquares(16);
